@@ -12,20 +12,22 @@ import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
 
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
-
   const [search, setSearch] = useSearchParams();
   const { user } = useUser();
 
   useEffect(() => {
     if (search.get("sign-in")) {
       setShowSignIn(true);
+
+      // Remove the query parameter after opening sign-in modal
+      setSearch({}, { replace: true });
     }
-  }, [search]);
+  }, [search, setSearch]);
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       setShowSignIn(false);
-      setSearch({});
+      setSearch({}, { replace: true }); // Ensure query params are cleared
     }
   };
 
@@ -82,6 +84,7 @@ const Header = () => {
           onClick={handleOverlayClick}
         >
           <SignIn
+            afterSignInUrl="/jobs" // Redirect after sign-in
             signUpForceRedirectUrl="/onboarding"
             fallbackRedirectUrl="/onboarding"
           />
