@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
@@ -13,16 +13,13 @@ import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [search, setSearch] = useSearchParams();
+  const navigate = useNavigate(); // To handle redirects after login
   const { user } = useUser();
 
   useEffect(() => {
     if (search.get("sign-in")) {
       setShowSignIn(true);
-
-      // Remove ?sign-in=true from the URL after opening modal
-      setTimeout(() => {
-        setSearch({}, { replace: true });
-      }, 500); // Delay ensures Clerk loads first
+      setSearch({}, { replace: true }); // Remove `?sign-in=true` immediately
     }
   }, [search, setSearch]);
 
@@ -86,7 +83,7 @@ const Header = () => {
           onClick={handleOverlayClick}
         >
           <SignIn
-            afterSignInUrl="/jobs" // Redirects users after successful sign-in
+            afterSignInUrl="/jobs" // Redirects users to `/jobs`
             signUpForceRedirectUrl="/onboarding"
             fallbackRedirectUrl="/onboarding"
           />
