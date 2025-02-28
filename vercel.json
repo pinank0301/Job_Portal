@@ -1,5 +1,33 @@
 {
     "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/jobs",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/onboarding",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/post-job",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/my-jobs",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/saved-jobs",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/job/:id",
+        "destination": "/index.html"
+      }
     ]
-  }  
+  }
+  
