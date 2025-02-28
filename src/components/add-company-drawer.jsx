@@ -59,13 +59,13 @@ const AddCompanyDrawer = ({ fetchCompanies }) => {
   useEffect(() => {
     if (dataAddCompany?.length > 0) {
       fetchCompanies();
-      reset(); // Reset form after successful submission
+      reset(); 
     }
   }, [dataAddCompany, fetchCompanies, reset]);
 
   return (
     <Drawer>
-      {/* Key Fix: Add asChild to DrawerTrigger */}
+      
       <DrawerTrigger asChild>
         <Button type="button" size="sm" variant="secondary">
           Add Company
@@ -76,10 +76,10 @@ const AddCompanyDrawer = ({ fetchCompanies }) => {
           <DrawerTitle>Add a New Company</DrawerTitle>
         </DrawerHeader>
         <form className="flex gap-2 p-4 pb-0">
-          {/* Company Name */}
+          
           <Input placeholder="Company name" {...register("name")} />
 
-          {/* Company Logo */}
+          
           <Input
             type="file"
             accept="image/*"
@@ -87,7 +87,7 @@ const AddCompanyDrawer = ({ fetchCompanies }) => {
             {...register("logo")}
           />
 
-          {/* Add Button */}
+         
           <Button
             type="button"
             onClick={handleSubmit(onSubmit)}

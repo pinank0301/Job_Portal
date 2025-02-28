@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import { Boxes, BriefcaseBusiness, Download, School } from "lucide-react";
 import {
   Card,

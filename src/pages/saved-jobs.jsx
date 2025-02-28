@@ -18,7 +18,7 @@ const SavedJobs = () => {
     if (isLoaded) {
       fnSavedJobs();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [isLoaded]);
 
   if (!isLoaded || loadingSavedJobs) {
