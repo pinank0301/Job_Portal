@@ -19,8 +19,10 @@ const Header = () => {
     if (search.get("sign-in")) {
       setShowSignIn(true);
 
-      // Remove the query parameter after opening sign-in modal
-      setSearch({}, { replace: true });
+      // Remove ?sign-in=true from the URL after opening modal
+      setTimeout(() => {
+        setSearch({}, { replace: true });
+      }, 500); // Delay ensures Clerk loads first
     }
   }, [search, setSearch]);
 
@@ -71,7 +73,7 @@ const Header = () => {
                   labelIcon={<Heart size={15} />}
                   href="/saved-jobs"
                 />
-                <UserButton.Action label="manageAccount" />
+                <UserButton.Action label="Manage Account" />
               </UserButton.MenuItems>
             </UserButton>
           </SignedIn>
@@ -84,7 +86,7 @@ const Header = () => {
           onClick={handleOverlayClick}
         >
           <SignIn
-            afterSignInUrl="/jobs" // Redirect after sign-in
+            afterSignInUrl="/jobs" // Redirects users after successful sign-in
             signUpForceRedirectUrl="/onboarding"
             fallbackRedirectUrl="/onboarding"
           />
